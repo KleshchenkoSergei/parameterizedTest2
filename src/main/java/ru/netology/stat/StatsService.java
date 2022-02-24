@@ -13,13 +13,11 @@ public class StatsService {
     }
 
     public int salesAvg(int[] sales) {
-        double sum = 0;
-        for (int sale : sales) {
-            sum += sale;
-        }
-        int average = (int)Math.round(sum / sales.length);
+        int avr = salesSum(sales);
+        int average = (int) Math.round(avr / sales.length);
         return average;
     }
+
 
     public int salesMaxMonth(int[] sales) {
         int monthMax = 0;
@@ -46,8 +44,7 @@ public class StatsService {
     }
 
     public int salesLowAverage(int[] sales) {
-        StatsService service = new StatsService();
-        int average = service.salesAvg(sales);
+        int average = salesAvg(sales);
         int numberLow = 0;
         for (int sale : sales) {
             if (sale < average) {
@@ -58,8 +55,7 @@ public class StatsService {
     }
 
     public int salesOverAverage(int[] sales) {
-        StatsService service = new StatsService();
-        int average = service.salesAvg(sales);
+        int average = salesAvg(sales);
         int numberOver = 0;
         for (int sale : sales) {
             if (sale > average) {
